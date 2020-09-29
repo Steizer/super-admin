@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppConfig } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'super-admin';
+
+  constructor(
+    public config: AppConfig
+  ) {
+
+  }
 }

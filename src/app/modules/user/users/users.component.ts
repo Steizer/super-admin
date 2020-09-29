@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { UsersService } from '../users.service';
+import { AbstractUserService } from '../users.service.abstract';
 
 @Component({
   selector: 'app-users',
@@ -8,13 +10,12 @@ import { User } from 'src/app/models/user.model';
 })
 export class UsersComponent implements OnInit {
 
-  public users = new Array<User>();
-  currentUser: User;
+  currentUser: User = undefined;
 
-  constructor() {
-    this.users.push(new User(0, 'john@ib.fr'));
-    this.users.push(new User(1, 'luke@ib.fr'));
-    this.users.push(new User(1, 'erza@ib.fr'));
+  constructor(
+    public usersService: AbstractUserService
+  ) {
+
   }
 
   ngOnInit(): void {
