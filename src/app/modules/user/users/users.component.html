@@ -1,0 +1,7 @@
+<div *ngFor="let user of users">
+    <app-user (select)="currentUser = $event" [user]="user"></app-user>
+</div>
+
+<pre *ngIf="currentUser">
+current selected user: {{currentUser.email}}
+</pre>
