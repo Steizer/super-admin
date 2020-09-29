@@ -1,0 +1,37 @@
+<div class="frame">
+    <h2>form by code</h2>
+    <form (ngSubmit)="submit()" [formGroup]="userForm">
+        <div>
+            <label>id</label><input name="id" formControlName="id">
+        </div>
+
+        <div>
+            <label>email</label><input name="email" formControlName="email">
+            <div *ngIf="emailCtrl.hasError('required')">email is required</div>
+            <div *ngIf="userForm.controls.email.hasError('required')">email is required</div>
+            <div *ngIf="userForm.controls.email.errors?.required">email is required</div>
+
+        </div>
+
+        <div>
+            <label>password</label><input type="password" name="password" formControlName="password">
+        </div>
+
+        <div>
+            <label>organisation</label><input name="organisation" formControlName="organisation">
+            <div *ngIf="orgaCtrl.hasError('isToto')">user come from toto corp</div>
+        </div>
+
+        <div>
+            <label>isAdmin</label><input type="checkbox" name="isAdmin" formControlName="isAdmin">
+        </div>
+
+        <button type="reset">reset</button>
+        <button [disabled]="userForm.invalid" type="submit">Register</button>
+
+        <pre>
+            {{userForm.value | json}}
+        </pre>
+
+    </form>
+</div>

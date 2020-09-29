@@ -5,19 +5,23 @@ import { AppComponent } from './app.component';
 import { UserModule } from './modules/user/user.module';
 import { UsersService } from './modules/user/users.service';
 import { AppConfig, CONFIG1, CONFIG2 } from './app.config';
+import { LandingComponent } from './common/landing/landing.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
-    UserModule
+    UserModule,
+    HttpClientModule
   ],
   providers: [
     {
       provide: AppConfig,
-      useValue: CONFIG1
+      useValue: CONFIG2
     }
   ],
   bootstrap: [AppComponent]

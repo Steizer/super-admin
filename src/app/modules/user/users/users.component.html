@@ -1,6 +1,14 @@
-<div *ngFor="let user of usersService.getUsers()">
+<app-user-form-by-template></app-user-form-by-template>
+<app-user-form-by-code></app-user-form-by-code>
+
+<!-- <div *ngFor="let user of users">
+    <app-user (select)="currentUser = $event" [user]="user"></app-user>
+</div> -->
+
+<div *ngFor="let user of (users)">
     <app-user (select)="currentUser = $event" [user]="user"></app-user>
 </div>
+
 
 <pre *ngIf="currentUser">
 current selected user: {{currentUser.email}}

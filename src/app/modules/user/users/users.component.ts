@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { UsersService } from '../users.service';
 import { AbstractUserService } from '../users.service.abstract';
@@ -11,6 +12,7 @@ import { AbstractUserService } from '../users.service.abstract';
 export class UsersComponent implements OnInit {
 
   currentUser: User = undefined;
+  users: Array<User> | Observable<Array<User>>;
 
   constructor(
     public usersService: AbstractUserService
@@ -19,6 +21,8 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    (this.usersService.getUsers() as Observable<User[]>).subscribe(val => this.users = val);
   }
 
 }
