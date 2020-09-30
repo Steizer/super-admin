@@ -11,6 +11,8 @@ import { Usersv2Service } from './usersv2.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormByTemplateComponent } from './forms/user-form-by-template/user-form-by-template.component';
 import { UserFormByCodeComponent } from './forms/user-form-by-code/user-form-by-code.component';
+import { UserPipe } from './user.pipe';
+import { FilterByEmailPipe } from './filter-by-email.pipe';
 
 
 
@@ -19,7 +21,9 @@ import { UserFormByCodeComponent } from './forms/user-form-by-code/user-form-by-
     UserComponent,
     UsersComponent,
     UserFormByTemplateComponent,
-    UserFormByCodeComponent
+    UserFormByCodeComponent,
+    UserPipe,
+    FilterByEmailPipe
   ],
   providers: [
     ApiService,

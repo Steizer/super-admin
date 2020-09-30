@@ -11,6 +11,8 @@ import { debounceTime, distinctUntilChanged, filter, map, reduce } from 'rxjs/op
 })
 export class AppComponent {
   title = 'super-admin';
+  money = 1980;
+  date = new Date();
 
   constructor(
     public config: AppConfig

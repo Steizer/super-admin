@@ -22,7 +22,11 @@ export class Usersv2Service extends AbstractUserService {
       .get('https://jsonplaceholder.typicode.com/users')
       .pipe(
         switchMap((data: any) => data),
-        map((olduser: any) => new User(olduser.id, olduser.email)),
+        map((olduser: any) => {
+          const u = new User(olduser.id, olduser.email);
+          u.organisation = olduser.company.name;
+          return u;
+        }),
         tap(val => console.log(val)),
         toArray()
       )

@@ -22,7 +22,8 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    (this.usersService.getUsers() as Observable<User[]>).subscribe(val => this.users = val);
+    // (this.usersService.getUsers() as Observable<User[]>).subscribe(val => this.users = val);
+    this.users = this.usersService.getUsers();
   }
 
 }

@@ -5,7 +5,14 @@
     <app-user (select)="currentUser = $event" [user]="user"></app-user>
 </div> -->
 
-<div *ngFor="let user of (users)">
+<form #filterForm="ngForm">
+    <input placeholder="email filter" type="text" name="filtername" ngModel #filteremail>
+    <button type="submit">filter</button>
+</form>
+
+
+<!-- <div *ngFor="let user of (users | async | filterByEmail:filterForm.value.filtername)"> -->
+<div *ngFor="let user of (users | async | filterByEmail:filteremail.value)">
     <app-user (select)="currentUser = $event" [user]="user"></app-user>
 </div>
 
