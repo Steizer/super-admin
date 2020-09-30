@@ -1,21 +1,21 @@
 <app-user-form-by-template></app-user-form-by-template>
-<app-user-form-by-code></app-user-form-by-code>
+<app-user-form-by-code (inputsubmit)="usersService.addUser($event); "></app-user-form-by-code>
 
 <!-- <div *ngFor="let user of users">
     <app-user (select)="currentUser = $event" [user]="user"></app-user>
 </div> -->
 
-<form #filterForm="ngForm">
-    <input placeholder="email filter" type="text" name="filtername" ngModel #filteremail>
-    <button type="submit">filter</button>
-</form>
+<!-- <form #filterForm="ngForm">
 
+</form> -->
+
+<input placeholder="email filter" type="text" name="filtername" #filteremail>
+<!-- <button (click)="1==1" type="submit">filter</button> -->
 
 <!-- <div *ngFor="let user of (users | async | filterByEmail:filterForm.value.filtername)"> -->
-<div *ngFor="let user of (users | async | filterByEmail:filteremail.value)">
+<div *ngFor="let user of (usersService.users | async)">
     <app-user (select)="currentUser = $event" [user]="user"></app-user>
 </div>
-
 
 <pre *ngIf="currentUser">
 current selected user: {{currentUser.email}}

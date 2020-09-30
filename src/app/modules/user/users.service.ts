@@ -6,7 +6,8 @@ import { AbstractUserService } from './users.service.abstract';
 
 @Injectable()
 export class UsersService extends AbstractUserService {
-  private users = new Array<User>();
+
+  // private users = new Array<User>();
 
   constructor(
     private api: ApiService,
@@ -15,16 +16,17 @@ export class UsersService extends AbstractUserService {
     super();
     console.log('UsersService');
 
-    this.users.push(new User(0, 'john@ib.fr'));
-    this.users.push(new User(1, 'luke@ib.fr'));
-    this.users.push(new User(2, 'erza@ib.fr'));
   }
 
   getUsers(): Array<User> {
-    return this.users;
+    return [];
   }
 
   addUser(user: User) {
-    this.users.push(user);
+    // this.users.push(user);
+  }
+
+  refresh() {
+    throw new Error('Method not implemented.');
   }
 }

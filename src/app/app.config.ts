@@ -5,13 +5,13 @@ export class AppConfig {
 }
 
 export const CONFIG1: AppConfig = {
-    apiendpoint: 'blabla',
-    title: 'main api',
+    apiendpoint: 'http://91.121.148.187:8080',
+    title: 'main',
     mode: 1
 }
 
 export const CONFIG2: AppConfig = {
-    apiendpoint: 'blabla2',
-    title: 'fallback api',
+    apiendpoint: 'http://91.121.148.187:8080',
+    title: 'secondary',
     mode: 2
 }

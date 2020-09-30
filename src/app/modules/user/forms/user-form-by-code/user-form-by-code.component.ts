@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-user-form-by-code',
@@ -12,6 +13,9 @@ export class UserFormByCodeComponent implements OnInit {
 
   emailCtrl: AbstractControl;
   orgaCtrl: AbstractControl;
+
+  @Output('inputsubmit')
+  inputsubmit = new EventEmitter<User>();
 
   constructor(fb: FormBuilder) {
 
@@ -31,17 +35,6 @@ export class UserFormByCodeComponent implements OnInit {
 
     this.emailCtrl = this.userForm.get('email');
     this.orgaCtrl = this.userForm.get('organisation');
-
-
-    this
-      .emailCtrl
-      .valueChanges
-      .pipe(
-        debounceTime(1000),
-        distinctUntilChanged()
-      ).subscribe(val => console.log(val));
-
-
   }
 
   ngOnInit(): void {
@@ -54,6 +47,9 @@ export class UserFormByCodeComponent implements OnInit {
 
   submit() {
     console.log(this.userForm.value);
+    const u = new User(0, '');
+    Object.assign(u, this.userForm.value);
+    this.inputsubmit.emit(u);
   }
 
 }

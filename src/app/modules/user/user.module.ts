@@ -42,7 +42,7 @@ import { FilterByEmailPipe } from './filter-by-email.pipe';
         if (config.mode === 1) {
           return new UsersService(apiService, http)
         } else {
-          return new Usersv2Service(http)
+          return new Usersv2Service(http, config)
         }
       }
 

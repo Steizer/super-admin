@@ -14,6 +14,8 @@ export class UsersComponent implements OnInit {
   currentUser: User = undefined;
   users: Array<User> | Observable<Array<User>>;
 
+
+
   constructor(
     public usersService: AbstractUserService
   ) {
@@ -21,9 +23,8 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     // (this.usersService.getUsers() as Observable<User[]>).subscribe(val => this.users = val);
-    this.users = this.usersService.getUsers();
+    this.usersService.refresh();
+    // this.users = this.usersService.users;
   }
-
 }
