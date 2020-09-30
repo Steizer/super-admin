@@ -8,8 +8,6 @@ import { AbstractUserService } from './users.service.abstract';
 @Injectable()
 export class UsersService extends AbstractUserService {
 
-  users = new BehaviorSubject<User[]>(new Array<User>());
-
   constructor(
     private api: ApiService,
     private http: HttpClient

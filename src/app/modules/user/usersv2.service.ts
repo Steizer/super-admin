@@ -11,7 +11,6 @@ import { AbstractUserService } from './users.service.abstract';
 })
 export class Usersv2Service extends AbstractUserService {
 
-  users = new BehaviorSubject<User[]>(new Array<User>());
 
   constructor(
     private http: HttpClient,
