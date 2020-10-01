@@ -8,7 +8,7 @@ export abstract class AbstractUserService {
         this.users = new BehaviorSubject<User[]>(new Array<User>());
     }
 
-    abstract getUsers(): Array<User> | Observable<Array<User>>;
+    abstract getUsers(): Observable<Array<User>>;
     abstract addUser(user: User);
     abstract refresh();
 }

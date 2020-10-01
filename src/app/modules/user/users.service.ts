@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { ApiService } from './api.service';
 import { AbstractUserService } from './users.service.abstract';
@@ -21,8 +21,8 @@ export class UsersService extends AbstractUserService {
     ]);
   }
 
-  getUsers(): Array<User> {
-    return [];
+  getUsers(): Observable<Array<User>> {
+    return from([]);
   }
 
   refresh() {

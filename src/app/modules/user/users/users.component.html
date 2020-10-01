@@ -23,14 +23,14 @@
 
 -->
 <div *ngFor="let user of usersbyResolver">
-    <app-user (select)="currentUser = $event" [user]="user"></app-user>
+    <app-user (select)="showDetails($event)" [user]="user"></app-user>
 </div>
 
 <router-outlet></router-outlet>
 
 
 <pre *ngIf="currentUser">
-current selected user: {{currentUser.email}}
+current selected user:{{currentUser.id}}  {{currentUser.email}}
 <!--     
     {{currentUser | json}}
  -->

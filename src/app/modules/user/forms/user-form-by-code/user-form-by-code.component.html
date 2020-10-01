@@ -10,6 +10,7 @@
             <div *ngIf="emailCtrl.hasError('required')">email is required</div>
             <div *ngIf="userForm.controls.email.hasError('required')">email is required</div>
             <div *ngIf="userForm.controls.email.errors?.required">email is required</div>
+            <div *ngIf="userForm.controls.email.errors?.not_available">email is not available</div>
 
         </div>
 

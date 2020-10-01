@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { UsersService } from '../users.service';
@@ -20,7 +20,9 @@ export class UsersComponent implements OnInit {
 
   constructor(
     public usersService: AbstractUserService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public router: Router
+
 
   ) {
 
@@ -33,4 +35,11 @@ export class UsersComponent implements OnInit {
 
     // this.users = this.usersService.users;
   }
+
+
+  public showDetails(user: User) {
+    this.router.navigate(['/users', user.id]);
+
+  }
+
 }

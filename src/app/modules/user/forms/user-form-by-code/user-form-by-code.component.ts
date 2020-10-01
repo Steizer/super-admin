@@ -1,7 +1,10 @@
+import { isDefined } from '@angular/compiler/src/util';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, find, map, switchMap } from 'rxjs/operators';
 import { User } from 'src/app/models/user.model';
+import { AbstractUserService } from '../../users.service.abstract';
 
 @Component({
   selector: 'app-user-form-by-code',
@@ -17,14 +20,33 @@ export class UserFormByCodeComponent implements OnInit {
   @Output('inputsubmit')
   inputsubmit = new EventEmitter<User>();
 
-  constructor(fb: FormBuilder) {
+  constructor(
+    fb: FormBuilder,
+    private userService: AbstractUserService) {
 
     this.userForm = fb.group({
       id: fb.control({ value: 0, disabled: true }, []),
-      email: fb.control('', [
-        Validators.required,
-        Validators.email,
-        Validators.min(5)]),
+
+
+
+      email: fb.control('',
+        {
+          validators: [
+            Validators.required,
+            Validators.email,
+            Validators.min(5)
+          ],
+          asyncValidators: [
+            control => this.isEmailNotAvailable(control)
+          ],
+          updateOn: 'blur'
+        }
+      ),
+
+
+
+
+
       password: fb.control(''),
       organisation: fb.control('', [
         Validators.required,
@@ -43,6 +65,18 @@ export class UserFormByCodeComponent implements OnInit {
   static orgaIsNotToto(control: FormControl) {
     const orgnisation = control.value;
     return orgnisation === 'toto' ? { isToto: true } : null;
+  }
+
+  isEmailNotAvailable(control: AbstractControl)
+    : Observable<ValidationErrors> {
+    const email = control.value;
+    return this.userService
+      .getUsers()
+      .pipe(
+        switchMap(users => users),
+        find(user => user.email === email),
+        map(user => user ? { not_available: true } : null)
+      )
   }
 
   submit() {

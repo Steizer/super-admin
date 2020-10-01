@@ -40,7 +40,7 @@ export class Usersv2Service extends AbstractUserService {
       });
   }
 
-  getUsers(): User[] | Observable<Array<User>> {
+  getUsers(): Observable<Array<User>> {
     return this
       .http
       .get<User[]>(this.config.apiendpoint + '/users')

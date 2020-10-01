@@ -11,6 +11,7 @@ import { AuthGuard } from '../guards/auth.guard';
 import { UsersResolver } from '../modules/user/resolvers/users.resolver';
 import { pid } from 'process';
 import { UserDetailsComponent } from '../modules/user/user-details/user-details.component';
+import { UserResolver } from '../modules/user/resolvers/user.resolver';
 
 const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'landing' },
@@ -25,7 +26,11 @@ const ROUTES: Routes = [
     ],
     children: [
       {
+
         path: ':id',
+        resolve: {
+          user: UserResolver,
+        },
         component: UserDetailsComponent
       }],
     resolve: {

@@ -10,7 +10,7 @@ export class UserPipe implements PipeTransform {
 
     // const str = 'user[ ' + value.email + '/' + value.organisation + ']';
 
-    return `user[${value.email}/${value.organisation}]`;
+    return `user[${value.id}/${value.email}/${value.organisation}]`;
   }
 
 }
