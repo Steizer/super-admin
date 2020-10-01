@@ -1,13 +1,13 @@
 <header>
   <h1>User admin</h1>
   <h6>used api: {{config.title}}</h6>
+  <h6>{{currentRoute}}</h6>
+
 </header>
 <hr>
-{{ money | currency:'JPY': 'symbol'}}
-{{ date| date:'mm:ss'}}
+<app-menu></app-menu>
 <hr>
-
-<app-users></app-users>
+<router-outlet></router-outlet>
 <hr>
 <footer>
   The world company (C)

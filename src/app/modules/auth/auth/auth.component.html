@@ -1,0 +1,6 @@
+<form>
+    is logged:{{authService.isLogged}}
+
+    <button type="button" (click)="authService.isLogged = false">logout</button>
+    <button type="button" (click)="authService.isLogged = true">login</button>
+</form>

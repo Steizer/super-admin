@@ -3,6 +3,7 @@ import { AppConfig } from './app.config';
 
 import { of, from, Observable } from 'rxjs'
 import { debounceTime, distinctUntilChanged, filter, map, reduce } from 'rxjs/operators'
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +15,36 @@ export class AppComponent {
   money = 1980;
   date = new Date();
 
+  currentRoute: string;
+
   constructor(
-    public config: AppConfig
+    public config: AppConfig,
+    private router: Router
   ) {
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        console.log('NavigationStart');
+
+      }
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+        console.log('NavigationEnd');
+      }
+      if (event instanceof NavigationCancel) {
+        console.log('NavigationCancel');
+      }
+
+      if (event instanceof NavigationError) {
+        console.log('NavigationError');
+      }
+    });
+
+    // setTimeout(() => {
+    //   this.router.navigate(['/users']);
+    // }, 5000);
+
+
     /*
         of([1, 2, 2, 2, 3])
           .pipe(

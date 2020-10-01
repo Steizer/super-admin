@@ -1,4 +1,6 @@
-<app-user-form-by-template></app-user-form-by-template>
+<!-- 
+    <app-user-form-by-template></app-user-form-by-template>
+-->
 <app-user-form-by-code (inputsubmit)="usersService.addUser($event); "></app-user-form-by-code>
 
 <!-- <div *ngFor="let user of users">
@@ -9,13 +11,23 @@
 
 </form> -->
 
-<input placeholder="email filter" type="text" name="filtername" #filteremail>
+<!-- <input placeholder="email filter" type="text" name="filtername" #filteremail> -->
 <!-- <button (click)="1==1" type="submit">filter</button> -->
 
 <!-- <div *ngFor="let user of (users | async | filterByEmail:filterForm.value.filtername)"> -->
+<!-- 
+    
 <div *ngFor="let user of (usersService.users | async)">
     <app-user (select)="currentUser = $event" [user]="user"></app-user>
 </div>
+
+-->
+<div *ngFor="let user of usersbyResolver">
+    <app-user (select)="currentUser = $event" [user]="user"></app-user>
+</div>
+
+<router-outlet></router-outlet>
+
 
 <pre *ngIf="currentUser">
 current selected user: {{currentUser.email}}

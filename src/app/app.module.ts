@@ -7,16 +7,24 @@ import { UsersService } from './modules/user/users.service';
 import { AppConfig, CONFIG1, CONFIG2 } from './app.config';
 import { LandingComponent } from './common/landing/landing.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorComponent } from './common/error/error.component';
+import { MenuComponent } from './common/menu/menu.component';
+import { RoutingModule } from './routing/routing.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent
+    LandingComponent,
+    ErrorComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
+    RoutingModule,
+
     UserModule,
-    HttpClientModule
+    AuthModule
   ],
   providers: [
     {

@@ -13,6 +13,8 @@ import { UserFormByTemplateComponent } from './forms/user-form-by-template/user-
 import { UserFormByCodeComponent } from './forms/user-form-by-code/user-form-by-code.component';
 import { UserPipe } from './user.pipe';
 import { FilterByEmailPipe } from './filter-by-email.pipe';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -23,7 +25,8 @@ import { FilterByEmailPipe } from './filter-by-email.pipe';
     UserFormByTemplateComponent,
     UserFormByCodeComponent,
     UserPipe,
-    FilterByEmailPipe
+    FilterByEmailPipe,
+    UserDetailsComponent
   ],
   providers: [
     ApiService,
@@ -53,6 +56,9 @@ import { FilterByEmailPipe } from './filter-by-email.pipe';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+
+    RouterModule
 
   ],
   exports: [
