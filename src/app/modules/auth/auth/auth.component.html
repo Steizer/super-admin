@@ -4,3 +4,16 @@
     <button type="button" (click)="authService.isLogged = false">logout</button>
     <button type="button" (click)="authService.isLogged = true">login</button>
 </form>
+
+<section>
+
+    <form (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px"
+        [formGroup]="loginForm">
+
+
+
+
+    </form>
+
+
+</section>

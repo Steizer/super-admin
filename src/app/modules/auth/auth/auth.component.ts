@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,9 +9,16 @@ import { AuthService } from '../auth.service';
 })
 export class AuthComponent implements OnInit {
 
+  loginForm: FormGroup;
+
+
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+
   }
 
 }
