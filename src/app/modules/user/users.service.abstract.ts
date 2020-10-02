@@ -9,6 +9,6 @@ export abstract class AbstractUserService {
     }
 
     abstract getUsers(): Observable<Array<User>>;
-    abstract addUser(user: User);
+    abstract addUser(user: User): Observable<Array<User>>;
     abstract refresh();
 }

@@ -57,16 +57,10 @@ export class Usersv2Service extends AbstractUserService {
       )
   }
 
-  addUser(user: User) {
+  addUser(user: User): Observable<Array<User>> {
     return this
       .http
-      .post(this.config.apiendpoint + '/users', user, { observe: 'response' })
-      .subscribe(val => {
-        console.log(val);
-        this.refresh();
-      });
-
-
+      .post<Array<User>>(this.config.apiendpoint + '/users', user)
   }
 
 

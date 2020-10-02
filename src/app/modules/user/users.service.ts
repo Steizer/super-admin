@@ -29,7 +29,8 @@ export class UsersService extends AbstractUserService {
     throw new Error('Method not implemented.');
   }
 
-  addUser(user: User) {
+  addUser(user: User): Observable<Array<User>> {
     // this.users.push(user);
+    return;
   }
 }

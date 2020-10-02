@@ -1,7 +1,7 @@
 <!-- 
     <app-user-form-by-template></app-user-form-by-template>
 -->
-<app-user-form-by-code (inputsubmit)="usersService.addUser($event); "></app-user-form-by-code>
+<app-user-form-by-code (inputsubmit)="addUser($event); "></app-user-form-by-code>
 
 <!-- <div *ngFor="let user of users">
     <app-user (select)="currentUser = $event" [user]="user"></app-user>
@@ -22,9 +22,15 @@
 </div>
 
 -->
-<div *ngFor="let user of usersbyResolver">
+<!--
+     <div *ngFor="let user of usersbyResolver">
     <app-user (select)="showDetails($event)" [user]="user"></app-user>
 </div>
+ -->
+<div *ngFor="let user of users$ | async">
+    <app-user (select)="showDetails($event)" [user]="user"></app-user>
+</div>
+users
 
 <router-outlet></router-outlet>
 

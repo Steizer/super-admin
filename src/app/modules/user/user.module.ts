@@ -15,6 +15,10 @@ import { UserPipe } from './user.pipe';
 import { FilterByEmailPipe } from './filter-by-email.pipe';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { RouterModule } from '@angular/router';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { UserState } from './store/user.state';
 
 
 
@@ -57,8 +61,13 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
 
-    RouterModule
+    NgxsModule.forRoot([
+      UserState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
 
   ],
   exports: [
